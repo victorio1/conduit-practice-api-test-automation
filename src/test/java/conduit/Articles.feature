@@ -4,7 +4,7 @@ Feature: Articles
     Given url apiUrl
 
     @debug
-    Scenario: Create a new article
+    Scenario: Create a new article 2
       Given path 'articles'
       And request
       """
