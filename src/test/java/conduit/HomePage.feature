@@ -115,3 +115,28 @@ Feature: Tests for the home page
         When method GET
         * eval sleep(5000)
         Then status 200
+
+
+      Scenario: Number to String
+        * def foo = 10
+        * def json = {"bar": #(foo+'')}
+        * match json == {"bar": '10'}
+
+      Scenario: String to Number 1
+        * def foo = '10'
+        * def json = {"bar": #(foo*1)}
+        * match json == {"bar": 10}
+
+      Scenario: String to Number 2
+        * def foo = '10'
+        * def json = {"bar": #(foo*1)}
+        * def json2 = {"bar": #(parseInt(foo))}
+        * match json == {"bar": 10}
+        * match json2 == {"bar": 10}
+
+      Scenario: String to Number 2
+        * def foo = '10'
+        * def json = {"bar": #(foo*1)}
+        * def json2 = {"bar": #(~~parseInt(foo))}
+        * match json == {"bar": 10}
+        * match json2 == {"bar": 10}
